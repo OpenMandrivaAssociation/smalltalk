@@ -11,7 +11,7 @@ Group:		Development/Other
 Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.bz2
 #Patch0:		smalltalk-amd64.patch
 Patch1:		smalltalk-proc.patch
-URL:		http://www.smalltalk.org/
+URL:		http://smalltalk.gnu.org/
 BuildRequires:	gtk+2-devel termcap-devel emacs-bin
 BuildRequires:	tcl tcl-devel tk tk-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
