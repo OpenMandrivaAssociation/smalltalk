@@ -8,8 +8,7 @@ Version:	%{version}
 Release:	%{release}
 License:	GPL & LGPL
 Group:		Development/Other
-Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.bz2
-Patch1:		smalltalk-proc.patch
+Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.gz
 URL:		http://smalltalk.gnu.org/
 BuildRequires:	gtk+2-devel termcap-devel emacs-bin
 BuildRequires:	tcl tcl-devel tk tk-devel
@@ -25,7 +24,6 @@ There is even a version for commercial operating systems like MS-NT.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
 %configure2_5x	
