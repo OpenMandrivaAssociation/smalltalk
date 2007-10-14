@@ -25,7 +25,6 @@ There is even a version for commercial operating systems like MS-NT.
 
 %prep
 %setup -q
-#%patch0 -p1
 %patch1 -p1
 
 %build
