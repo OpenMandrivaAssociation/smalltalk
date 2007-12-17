@@ -12,7 +12,6 @@ Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.gz
 URL:		http://smalltalk.gnu.org/
 BuildRequires:	gtk+2-devel termcap-devel emacs-bin
 BuildRequires:	tcl tcl-devel tk tk-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 GNU Smalltalk is a Free (or Open Source) implementation that closely 
