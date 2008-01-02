@@ -8,7 +8,7 @@ Version:	%{version}
 Release:	%{release}
 License:	GPL & LGPL
 Group:		Development/Other
-Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.bz2
 URL:		http://smalltalk.gnu.org/
 BuildRequires:	gtk+2-devel termcap-devel emacs-bin
 BuildRequires:	tcl tcl-devel tk tk-devel
