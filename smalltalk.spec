@@ -54,7 +54,7 @@ There is even a version for commercial operating systems like MS-NT.
 This Package contains the Smalltalk mode for Emacs.
 
 %package devel
-Summary:      Smalltalk mode for Emacs
+Summary:      Development files for GNU Smalltalk
 Group:        Development/Other
 Requires:     %{name} = %{version}-%{release}
 Conflicts:    smalltalk < 3.0.1-2
