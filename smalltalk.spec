@@ -67,7 +67,7 @@ Robson. GNUSmalltalk runs on most versions of Unix or Unix like
 systems (GNU/Linux, FreeBSD, etc...).
 There is even a version for commercial operating systems like MS-NT.
 
-This Package contains header files and other stuff provided by                                                                                                                     
+This Package contains header files and other stuff provided by
 GNU Smalltalk. You will need this package, if you want to extent GNU
 Smalltalk with functions written in C.
 
