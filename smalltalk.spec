@@ -1,6 +1,6 @@
 %define	name    smalltalk
-%define	version	3.0.1
-%define	release	%mkrel 2
+%define	version	3.0.3
+%define	release	%mkrel 1
 
 Summary:	Smalltalk free language implementation
 Name:		%{name}
@@ -8,9 +8,7 @@ Version:	%{version}
 Release:	%{release}
 License:	GPLv2+ and LGPLv2+ and GFDL
 Group:		Development/Other
-Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.bz2
-# Build against system libsigsegv
-Patch0:		smalltalk-3.0.1-sigsegv.patch
+Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.gz
 # Don't save image at gst-blox startup, otherwise you get a permission denied
 # error (patch from Debian)
 Patch1:		smalltalk-3.0.1-blox-startup.patch
@@ -73,12 +71,14 @@ Smalltalk with functions written in C.
 
 %prep
 %setup -q
-%patch0 -p1 -b .sigsegv
 %patch1 -p1 -b .blox-startup
 
 %build
-autoreconf
-%configure --disable-static --with-imagedir=%{_libdir}/%{name}
+rm -rf %{buildroot}
+%configure --disable-static \
+           --with-system-libsigsegv \
+           --with-system-libffi=yes \
+           --with-imagedir=%{_libdir}/%{name}
 %make
 
 %install
