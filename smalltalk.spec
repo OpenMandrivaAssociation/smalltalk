@@ -1,6 +1,6 @@
 %define	name    smalltalk
 %define	version	3.0.3
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Summary:	Smalltalk free language implementation
 Name:		%{name}
