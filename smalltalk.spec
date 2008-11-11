@@ -1,5 +1,5 @@
 %define	name    smalltalk
-%define	version	3.0.4
+%define	version	3.1
 %define	release	%mkrel 1
 
 Summary:	Smalltalk free language implementation
@@ -24,7 +24,13 @@ BuildRequires:	libpq-devel
 BuildRequires:	zlib-devel
 BuildRequires:	zip
 BuildRequires:	libsigsegv-devel
-BuildRequires:	ffi-devel
+BuildRequires:	ffi5-devel
+BuildRequires:	SDL-devel
+BuildRequires:	SDL_mixer-devel
+BuildRequires:	SDL_image-devel
+BuildRequires:	SDL_sound-devel
+BuildRequires:	SDL_ttf-devel
+BuildRequires:	mesaglut-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -76,10 +82,19 @@ Smalltalk with functions written in C.
 %build
 rm -rf %{buildroot}
 %configure --disable-static \
+           --disable-rpath \
            --with-system-libsigsegv \
            --with-system-libffi=yes \
            --with-imagedir=%{_libdir}/%{name}
 %make
+
+cd doc
+for i in gst*;
+do
+  sed -i -e 's!%{_libdir}!/usr/lib(64)!g' \
+         -e 's!/usr/lib!/usr/lib(64)!g' \
+         -e 's!/usr/share/smalltalk/kernel!/usr/lib(64)/smalltalk/kernel!g' $i
+done
 
 %install
 %{makeinstall_std}
@@ -102,6 +117,7 @@ rm -rf %{buildroot}
 %{_bindir}/gst-load
 %{_bindir}/gst-package
 %{_bindir}/gst-reload
+%{_bindir}/gst-remote
 %{_bindir}/gst-sunit
 %multiarch %{multiarch_bindir}/gst-config
 %dir %{_datadir}/%{name}
