@@ -1,6 +1,6 @@
 %define	name    smalltalk
 %define	version	3.1
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Summary:	Smalltalk free language implementation
 Name:		%{name}
@@ -12,6 +12,8 @@ Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.gz
 # Don't save image at gst-blox startup, otherwise you get a permission denied
 # error (patch from Debian)
 Patch1:		smalltalk-3.0.1-blox-startup.patch
+# Fix for Tcl 8.6 (interp->result, TIP #330) - AdamW 2008/12
+Patch2:		smalltalk-3.1-tcl86.patch
 URL:		http://smalltalk.gnu.org/
 BuildRequires:	gtk+2-devel emacs-bin
 BuildRequires:	readline-devel termcap-devel
@@ -78,6 +80,7 @@ Smalltalk with functions written in C.
 %prep
 %setup -q
 %patch1 -p1 -b .blox-startup
+%patch2 -p1 -b .tcl86
 
 %build
 rm -rf %{buildroot}
