@@ -83,9 +83,9 @@ Smalltalk with functions written in C.
 %patch2 -p1 -b .tcl86
 
 %build
-rm -rf %{buildroot}
-%configure --disable-static \
+%configure2_5x --disable-static \
            --disable-rpath \
+	   --with-tcl=%{_libdir} --with-tk=%{_libdir} \
            --with-system-libsigsegv \
            --with-system-libffi=yes \
            --with-imagedir=%{_libdir}/%{name}
@@ -100,9 +100,13 @@ do
 done
 
 %install
+rm -fr %buildroot
 %{makeinstall_std}
 
 %multiarch_binaries $RPM_BUILD_ROOT%{_bindir}/gst-config
+
+%clean
+rm -fr %buildroot
 
 %post
 %_install_info gst.info
@@ -122,7 +126,6 @@ done
 %{_bindir}/gst-reload
 %{_bindir}/gst-remote
 %{_bindir}/gst-sunit
-%multiarch %{multiarch_bindir}/gst-config
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
 %{_libdir}/*.so.*
@@ -130,15 +133,17 @@ done
 %{_infodir}/*.info*
 %{_mandir}/man1/*
 
-%files devel                                                                                                                                                                       
-%defattr(-,root,root,-)                                                                                                                                                            
-%{_bindir}/gst-config                                                                                                                                                              
-%{_libdir}/libgst.so                                                                                                                                                               
-%{_libdir}/pkgconfig/gnu-smalltalk.pc                                                                                                                                              
-%{_datadir}/aclocal/*.m4                                                                                                                                                           
-%{_includedir}/gst.h                                                                                                                                                               
-%{_includedir}/gstpub.h    
+%files devel                                                                                                                                                    
+%defattr(-,root,root)
+%{_bindir}/gst-config
+%multiarch %{multiarch_bindir}/gst-config
+%{_libdir}/libgst.so
+%{_libdir}/pkgconfig/gnu-smalltalk.pc
+%{_datadir}/aclocal/*.m4
+%{_includedir}/gst.h
+%{_includedir}/gstpub.h
 %{_libdir}/*.la
 
 %files emacs
+%defattr(-,root,root)
 %{_datadir}/emacs/site-lisp/*
