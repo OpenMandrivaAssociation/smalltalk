@@ -15,6 +15,7 @@ Patch1:		smalltalk-3.0.1-blox-startup.patch
 # Fix for Tcl 8.6 (interp->result, TIP #330) - AdamW 2008/12
 Patch2:		smalltalk-3.1-tcl86.patch
 Patch3:		smalltalk-3.0.4-CVE-2009-3736.diff
+Patch4:		smalltalk-3.1-gmp-5.0.patch
 URL:		http://smalltalk.gnu.org/
 BuildRequires:	gtk+2-devel emacs-bin
 BuildRequires:	readline-devel termcap-devel
@@ -83,6 +84,7 @@ Smalltalk with functions written in C.
 %patch1 -p1 -b .blox-startup
 %patch2 -p1 -b .tcl86
 %patch3 -p1 -b .CVE-2009-3736
+%patch4 -p1 -b .gmp
 
 %build
 %configure2_5x --disable-static \
