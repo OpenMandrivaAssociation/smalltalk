@@ -1,6 +1,6 @@
 %define	name    smalltalk
-%define	version	3.1
-%define	release	%mkrel 6
+%define	version	3.2.1
+%define	release	%mkrel 1
 
 Summary:	Smalltalk free language implementation
 Name:		%{name}
@@ -8,14 +8,9 @@ Version:	%{version}
 Release:	%{release}
 License:	GPLv2+ and LGPLv2+ and GFDL
 Group:		Development/Other
-Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.gz
-# Don't save image at gst-blox startup, otherwise you get a permission denied
-# error (patch from Debian)
-Patch1:		smalltalk-3.0.1-blox-startup.patch
+Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.xz
 # Fix for Tcl 8.6 (interp->result, TIP #330) - AdamW 2008/12
 Patch2:		smalltalk-3.1-tcl86.patch
-Patch3:		smalltalk-3.0.4-CVE-2009-3736.diff
-Patch4:		smalltalk-3.1-gmp-5.0.patch
 URL:		http://smalltalk.gnu.org/
 BuildRequires:	gtk+2-devel emacs-bin
 BuildRequires:	readline-devel termcap-devel
@@ -81,10 +76,7 @@ Smalltalk with functions written in C.
 
 %prep
 %setup -q
-%patch1 -p1 -b .blox-startup
 %patch2 -p1 -b .tcl86
-%patch3 -p1 -b .CVE-2009-3736
-%patch4 -p1 -b .gmp
 
 %build
 %configure2_5x --disable-static \
@@ -130,6 +122,8 @@ rm -fr %buildroot
 %{_bindir}/gst-reload
 %{_bindir}/gst-remote
 %{_bindir}/gst-sunit
+%{_bindir}/gst-browser
+%{_bindir}/gst-profile
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/*
 %{_libdir}/*.so.*
@@ -137,7 +131,7 @@ rm -fr %buildroot
 %{_infodir}/*.info*
 %{_mandir}/man1/*
 
-%files devel                                                                                                                                                    
+%files devel
 %defattr(-,root,root)
 %{_bindir}/gst-config
 %multiarch %{multiarch_bindir}/gst-config
