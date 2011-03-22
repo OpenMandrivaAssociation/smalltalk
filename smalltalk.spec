@@ -145,3 +145,4 @@ rm -fr %buildroot
 %files emacs
 %defattr(-,root,root)
 %{_datadir}/emacs/site-lisp/*
+%{_sysconfdir}/emacs/site-start.d/**
