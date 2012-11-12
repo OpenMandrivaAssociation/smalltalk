@@ -1,0 +1,17 @@
+--- smalltalk-3.1/packages/blox/tk/BloxTK.c	2008-09-18 00:50:58.000000000 -0700
++++ smalltalk-3.1/packages/blox/tk/BloxTK.c.new	2008-12-04 16:08:20.000000000 -0800
+@@ -173,12 +173,12 @@
+ 
+   if (Tcl_Init (interp) == TCL_ERROR)
+     {
+-      fprintf (stderr, "Tcl_Init failed: %s\n", interp->result);
++      fprintf (stderr, "Tcl_Init failed: %s\n", Tcl_GetStringResult(interp));
+       exit (1);
+     }
+   if (Tk_Init (interp) == TCL_ERROR)
+     {
+-      fprintf (stderr, "Tk_Init failed: %s\n", interp->result);
++      fprintf (stderr, "Tk_Init failed: %s\n", Tcl_GetStringResult(interp));
+       exit (1);
+     }
+   Tcl_CreateCommand (interp, "callback", doCallback, NULL, NULL);
