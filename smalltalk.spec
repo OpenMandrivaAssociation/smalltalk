@@ -12,25 +12,24 @@ Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.xz
 # Fix for Tcl 8.6 (interp->result, TIP #330) - AdamW 2008/12
 Patch2:		smalltalk-3.1-tcl86.patch
 URL:		http://smalltalk.gnu.org/
-BuildRequires:	gtk+2-devel emacs-bin
+BuildRequires:	pkgconfig(gtk+-2.0) emacs-bin
 BuildRequires:	readline-devel termcap-devel
-BuildRequires:	tcl tcl-devel tk tk-devel
+BuildRequires:	tcl tcl-devel tk pkgconfig(tk)
 BuildRequires:	gdbm-devel
 BuildRequires:	gmp-devel
-BuildRequires:	sqlite3-devel
+BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	texinfo
 BuildRequires:	libpq-devel
-BuildRequires:	zlib-devel
+BuildRequires:	pkgconfig(zlib)
 BuildRequires:	zip
 BuildRequires:	libsigsegv-devel
-BuildRequires:	ffi5-devel
-BuildRequires:	SDL-devel
-BuildRequires:	SDL_mixer-devel
-BuildRequires:	SDL_image-devel
+BuildRequires:	pkgconfig(libffi)
+BuildRequires:	pkgconfig(sdl)
+BuildRequires:	pkgconfig(SDL_mixer)
+BuildRequires:	pkgconfig(SDL_image)
 BuildRequires:	SDL_sound-devel
-BuildRequires:	SDL_ttf-devel
-BuildRequires:	mesaglut-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	pkgconfig(SDL_ttf)
+BuildRequires:	pkgconfig(glut)
 
 %description
 GNU Smalltalk is a Free (or Open Source) implementation that closely 
@@ -96,13 +95,9 @@ do
 done
 
 %install
-rm -fr %buildroot
 %{makeinstall_std}
 
-%multiarch_binaries $RPM_BUILD_ROOT%{_bindir}/gst-config
-
-%clean
-rm -fr %buildroot
+%multiarch_binaries %{buildroot}%{_bindir}/gst-config
 
 %post
 %_install_info gst.info
@@ -111,7 +106,6 @@ rm -fr %buildroot
 %_remove_install_info gst.info
 
 %files 
-%defattr(-,root,root)
 %doc AUTHORS NEWS README
 %{_bindir}/gst
 %{_bindir}/gst-blox
@@ -132,17 +126,15 @@ rm -fr %buildroot
 %{_mandir}/man1/*
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/gst-config
-%multiarch %{multiarch_bindir}/gst-config
+#% multiarch 
+%{multiarch_bindir}/gst-config
 %{_libdir}/libgst.so
 %{_libdir}/pkgconfig/gnu-smalltalk.pc
 %{_datadir}/aclocal/*.m4
 %{_includedir}/gst.h
 %{_includedir}/gstpub.h
-%{_libdir}/*.la
 
 %files emacs
-%defattr(-,root,root)
 %{_datadir}/emacs/site-lisp/*
 %{_sysconfdir}/emacs/site-start.d/**
