@@ -99,8 +99,6 @@ done
 
 %multiarch_binaries %{buildroot}%{_bindir}/gst-config
 
-%post
-%_install_info gst.info
 
 %preun
 %_remove_install_info gst.info
