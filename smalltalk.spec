@@ -100,8 +100,6 @@ done
 %multiarch_binaries %{buildroot}%{_bindir}/gst-config
 
 
-%preun
-%_remove_install_info gst.info
 
 %files 
 %doc AUTHORS NEWS README
