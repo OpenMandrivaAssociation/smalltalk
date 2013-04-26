@@ -1,0 +1,12 @@
+diff -Naur smalltalk-3.2.4.orig/doc/Makefile.in smalltalk-3.2.4/doc/Makefile.in
+--- smalltalk-3.2.4.orig/doc/Makefile.in	2013-04-26 15:39:42.233718628 +0400
++++ smalltalk-3.2.4/doc/Makefile.in	2013-04-26 16:06:32.080157849 +0400
+@@ -941,7 +941,7 @@
+ 
+ install-data-local: install-man
+ 	rm -f $(DESTDIR)$(man1dir)/gst-reload.1
+-	$(LN_S) $(DESTDIR)$(man1dir)/gst-load.1 $(DESTDIR)$(man1dir)/gst-reload.1
++	$(LN_S) gst-load.1 $(DESTDIR)$(man1dir)/gst-reload.1
+ 
+ $(srcdir)/blox.texi: $(top_srcdir)/packages/blox/tk/stamp-classes
+ 	files=`$(GST_PACKAGE) $(patsubst %, %/package.xml, $(^D)) \
