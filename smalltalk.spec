@@ -1,7 +1,7 @@
 Summary:	Smalltalk free language implementation
 Name:		smalltalk
 Version:	3.2.4
-Release:	3
+Release:	4
 License:	GPLv2+ and LGPLv2+ and GFDL
 Group:		Development/Other
 Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.xz
