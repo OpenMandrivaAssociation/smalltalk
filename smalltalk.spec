@@ -8,7 +8,7 @@ Source0:	ftp://ftp.gnu.org/gnu/smalltalk/%{name}-%{version}.tar.xz
 # Fix for Tcl 8.6 (interp->result, TIP #330) - AdamW 2008/12
 Patch2:		smalltalk-3.1-tcl86.patch
 Patch3:		smalltalk-3.2.4-gst-reload-symlink.patch
-URL:		http://smalltalk.gnu.org/
+URL:		https://smalltalk.gnu.org/
 BuildRequires:	pkgconfig(gtk+-2.0) emacs-bin
 BuildRequires:	readline-devel termcap-devel
 BuildRequires:	tcl tcl-devel tk pkgconfig(tk)
